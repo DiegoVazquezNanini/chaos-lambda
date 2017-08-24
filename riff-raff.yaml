@@ -1,0 +1,19 @@
+stacks: [frontend]
+regions: [eu-west-1]
+
+deployments:
+  chaos-lambda:
+    type: aws-lambda
+    parameters:
+      bucket: frontend-dist
+      functionNames: [chaos-lambda-]
+      fileName: chaos-lambda.jar
+      prefixStack: false
+    dependencies: [chaos-lambda-cfn]
+  chaos-lambda-cfn:
+    type: cloud-formation
+    app: chaos-lambda
+    parameters:
+      prependStackToCloudFormationStackName: false
+      cloudFormationStackName: chaos-lambda
+      templatePath: cfn.yaml

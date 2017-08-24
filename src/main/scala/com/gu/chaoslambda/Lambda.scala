@@ -60,7 +60,7 @@ object Lambda {
       val stageTag = extractTagValue(tags, "Stage").getOrElse("")
       val change = r.nextInt(100)
 
-      if (change >= 90 && stageTag == input.stage && stackTag == input.stack) {
+      if (change >= 98 && stageTag == input.stage && stackTag == input.stack) {
         logger.info(s"Killing instance: ${instance.getInstanceId}, env: $stageTag, stack: $stackTag, app: $appTag")
         //val terminationRequest = new TerminateInstancesRequest(List(instance.getInstanceId).asJava)
         //ec2Client.terminateInstances(terminationRequest)
